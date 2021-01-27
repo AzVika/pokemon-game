@@ -1,19 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import HeaderBlock from './components/HeaderBlock';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello Word!
-        </p>
-        <p>
-          I want to learn React.js!
-        </p>
-      </header>
-    </div>
+    <>  
+      <HeaderBlock 
+        title="This is new Title"
+        descr="This is new description!" 
+      />
+      <HeaderBlock 
+        title="This is new Title"
+        hideBackground
+      />
+    </>
   );
 }
 

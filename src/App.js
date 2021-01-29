@@ -2,32 +2,191 @@ import Header from './components/Header';
 import Layout from './components/Layout';
 import Footer from './components/Footer';
 
+import gbImage1 from './assets/bg1.jpg';
+import gbImage3 from './assets/bg3.jpg';
+
+import PokemonCard from './components/PokemonCard';
+
+const POKEMONS = [
+  {
+    "abilities": [
+      "keen-eye",
+      "tangled-feet",
+      "big-pecks"
+    ],
+    "stats": {
+      "hp": 63,
+      "attack": 60,
+      "defense": 55,
+      "special-attack": 50,
+      "special-defense": 50,
+      "speed": 71
+    },
+    "type": "flying",
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/17.png",
+    "name": "pidgeotto",
+    "base_experience": 122,
+    "height": 11,
+    "id": 17,
+    "values": {
+      "top": "A",
+      "right": 2,
+      "bottom": 7,
+      "left": 5
+    }
+  },
+  {
+    "abilities": [
+      "intimidate",
+      "shed-skin",
+      "unnerve"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 95,
+      "defense": 69,
+      "special-attack": 65,
+      "special-defense": 79,
+      "speed": 80
+    },
+    "type": "poison",
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/24.png",
+    "name": "arbok",
+    "base_experience": 157,
+    "height": 35,
+    "id": 24,
+    "values": {
+      "top": 5,
+      "right": 9,
+      "bottom": "A",
+      "left": "A"
+    }
+  },
+  {
+    "abilities": [
+      "static",
+      "lightning-rod"
+    ],
+    "stats": {
+      "hp": 35,
+      "attack": 55,
+      "defense": 40,
+      "special-attack": 50,
+      "special-defense": 50,
+      "speed": 90
+    },
+    "type": "electric",
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+    "name": "pikachu",
+    "base_experience": 112,
+    "height": 4,
+    "id": 25,
+    "values": {
+      "top": 8,
+      "right": "A",
+      "bottom": 9,
+      "left": 6
+    }
+  },
+  {
+    "abilities": [
+      "overgrow",
+      "chlorophyll"
+    ],
+    "stats": {
+      "hp": 45,
+      "attack": 49,
+      "defense": 49,
+      "special-attack": 65,
+      "special-defense": 65,
+      "speed": 45
+    },
+    "type": "grass",
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+    "name": "bulbasaur",
+    "base_experience": 64,
+    "height": 7,
+    "id": 1,
+    "values": {
+      "top": 8,
+      "right": 4,
+      "bottom": 2,
+      "left": 7
+    }
+  },
+  {
+    "abilities": [
+      "blaze",
+      "solar-power"
+    ],
+    "stats": {
+      "hp": 39,
+      "attack": 52,
+      "defense": 43,
+      "special-attack": 60,
+      "special-defense": 50,
+      "speed": 65
+    },
+    "type": "fire",
+    "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+    "name": "charmander",
+    "base_experience": 62,
+    "height": 6,
+    "id": 4,
+    "values": {
+      "top": 7,
+      "right": 6,
+      "bottom": 1,
+      "left": 4
+    }
+  }
+];
 
 const App = () => {
   return (
     <> 
         <Header
-            title="This is title"
-            descr="This is Description!"
+            title="Pokemon Games"
+            descr="This is simple triple triad card game"
         />
+
         <Layout
-            id="1"
-            title="Layout 1"
-            descr="Description 1"
-            urlBg="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9b52e4b6-1d4e-4a16-8859-0147b1f4ec81/bg2.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210127%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210127T131418Z&X-Amz-Expires=86400&X-Amz-Signature=7e3bac9aa3b5628275331a95aaec40a0e1982de3b9d50c06f78f5d22395967e8&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22bg2.jpg%22"
-        />
+            id="rules"
+            title="Rules"
+            urlBg={gbImage3}>
+            <p>In the game two players face off against one another, one side playing as "blue", the other as "red" on a 3x3 grid.</p>
+            <p>Each player has five cards in a hand and the aim is to capture the opponent's cards by turning them into the player's own color of red or blue.</p>
+        </Layout>
+
         <Layout
-            id="2"
-            title="Layout 2"
-            descr="Description 2"
-            colorBg="#c0c7d7"
-        />
+            id="cards"
+            title="Cards"
+            colorTilte="#fff"
+            colorBg="#202736"
+        >
+            <div className="flex">
+                {
+                    POKEMONS.map(item => 
+                        <PokemonCard
+                            key={item.id}
+                            name={item.name}
+                            img={item.img}
+                            id={item.id}
+                            type={item.type}
+                            values={item.values}
+                        />)
+                }
+            </div>
+        </Layout>
+
         <Layout
-            id="3"
-            title="Layout 3"
-            descr="Description 3"
-            urlBg="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3e62948f-bef9-4af8-b2f6-c0a97abc27a7/bg3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210127%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210127T123914Z&X-Amz-Expires=86400&X-Amz-Signature=a85b6bdf82b47ade1865a52e3f4c9487f4d7ef710e910e0893b8738795aec37e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22bg3.jpg%22"
-        />
+            id="about"
+            title="Full Rules"
+            urlBg={gbImage1}
+        >
+            <p>To win, a majority of the total ten cards played (including the one card that is not placed on the board) must be of the player's card color. To do this, the player must capture cards by placing a card adjacent to an opponent's card whereupon the 'ranks' of the sides where the two cards touch will be compared. If the rank of the opponent's card is higher than the player's card, the player's card will be captured and turned into the opponent's color. If the player's rank is higher, the opponent's card will be captured and changed into the player's color instead.</p>
+        </Layout>
+
         <Footer />
     </>
     
